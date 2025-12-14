@@ -1,0 +1,9 @@
+export default function({children}:{children:React.ReactNode}){
+    return <div>
+        <div className="text-center">
+        signup now for 20% off on our products next 3 days
+    </div> 
+    {children}
+        </div>
+    
+}

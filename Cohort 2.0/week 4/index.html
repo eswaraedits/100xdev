@@ -1,0 +1,39 @@
+<html>
+    <script>
+        let timeout;
+        function debounce(){
+        clearTimeout(timeout)// this will clear in time
+           const timeout = setTimeout(pupulateDiv(),1000)//return an id which will help us to check if ther is any settimeouts if ther is any clear them
+           
+        }
+        async function populateDiv() {
+
+            //alert("hi")
+            // console.log('hi there ') //but i ouput will be in dom
+            // document.write("hello")
+            const a = document.getElementById("firstNumber").value;
+            const b = document.getElementById("secondNumber").value;
+            //const element = document.getElementById("finalSum")
+          const response = await  fetch("https://sum-server.100xdevs.com/sum?a=" +a+"&b="+b)
+          const ans = await response.text()
+          //console.log(ans)
+          document.getElementById('finalSum ').innerText=ans
+            //element.innerHTML = parseInt(a) + parseInt(b);
+            // fetch()
+            // string => number
+            // "1111" => 1111
+        }
+    </script>
+    <body>
+        
+        <!-- <input id="firstNumber" type="text" placeholder="First number"></input> <br></br>
+        <input id="secondNumber" type="text" placeholder="Second number"></input> <br></br>
+        <input oninput="populateDiv()" id="firstNumber" type = "text" placeholder="enter n1"> <br><br>
+        <input oninput="populateDiv()" id="secondNumber" type = "text" placeholder="enter n2"> -->
+       <!--<button onclick="populateDiv()">Calculate sum</button> <br></br>--> 
+            <input id="firstNumber" type="text" placeholder="enter n1"> <br> <br>
+            <input id= "secondNumber" type= "text" placeholder="enter n2"> <br> <br>
+            <button onclick="populateDiv()">calculate sum</button>
+        <div id="finalSum"></div> <!-- finalSum is  empty div-->
+    </body>
+</html>

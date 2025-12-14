@@ -1,0 +1,19 @@
+<html>
+    <script>
+        let timeout;
+        function debouncing(){
+            clearTimeout(timeout);
+             timeout = setTimeout(populateSum,2000)
+        }
+        
+            function populateSum(){
+                const a = document.getElementById("firstValue").value;
+                const b = document.getElementById('secondValue').value;
+                const element = document.getElementById("finalSum")
+                element.innerHTML = parseInt(a)+parseInt(b)
+            }
+    </script>
+    <input oninput="debouncing()" id = "firstValue" type="text" placeholder="enter value 1"><br><br>
+    <input oninput="debouncing()" id = "secondValue" type="text" placeholder="enter value 2"><br><br>
+    <div id="finalSum"></div>
+</html>

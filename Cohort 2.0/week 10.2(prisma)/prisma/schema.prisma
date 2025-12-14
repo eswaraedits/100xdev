@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" //mysql //mongodb ....
+  url      = "postgresql://neondb_owner:gHto2X4alLEP@ep-floral-hall-a5t1fo2d.us-east-2.aws.neon.tech/neondb?sslmode=require"
+}
+
+//CREATE TABLE Users{
+//id SERIAL PRIMARY KEY 
+//}
+model User{
+  id Int @id @default(autoincrement())  //id is best for diff users email cant as ppl change email and username too they can change but id always one
+  email String @unique
+  firstName String
+  lastName String? //optional
+  password String 
+  //in future say u add phone String? "+9188..." easy right 
+  //for past users you add String? default("") works
+}
+
+model Todo{
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  done Boolean @default(false)
+  userId Int
+}
